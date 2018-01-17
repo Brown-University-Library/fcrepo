@@ -1124,6 +1124,10 @@ public class DefaultAccess
             throw new DatastreamNotFoundException(message);
         }
 
+        if (ds.DSState.equalsIgnoreCase("D")) {
+            throw new DatastreamNotFoundException("");
+        }
+
         if (ds.isRepositoryManaged()) {
             if (ds.DSSize <= 0) {
                 ds.DSSize = ds.getContentSize(context);

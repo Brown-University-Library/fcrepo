@@ -91,6 +91,7 @@ public class DefaultAccessTest {
         mock.DSChecksum = TEST_ETAG_CHECKSUM;
         mock.DSCreateDT = new Date(System.currentTimeMillis() - 1000);
         mock.DSSize = size;
+        mock.DSState = "A";
         when(mock.getContentStream(any(Context.class))).thenReturn(content);
         when(mock.isRepositoryManaged()).thenReturn(true);
         return mock;
@@ -132,6 +133,15 @@ public class DefaultAccessTest {
         assertEquals(13l,output.getSize());
         assertEquals("0123456789abc", IOUtils.toString(output.getStream()));
         assertEquals(HttpStatus.SC_PARTIAL_CONTENT, output.getStatusCode());
+    }
+
+    @Test(expected=DatastreamNotFoundException.class)
+    public void testDeletedDatastreamDissemination() throws Exception {
+        DatastreamManagedContent ds = mockDatastream("0123456789abcdef");
+        ds.DSState = "D";
+        when(mockReader.GetDatastream(any(String.class), any(Date.class))).thenReturn(ds);
+        Context context = getContext();
+        test.getDatastreamDissemination(context, TEST_PID, TEST_DSID, null);
     }
 
     private Context getContext() throws Exception {

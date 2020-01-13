@@ -1,4 +1,9 @@
 dist: bionic
 language: java
 
+jdk:
+  - oraclejdk8
+  - openjdk8
+
 script: mvn install -Dintegration.test.skip=true
+

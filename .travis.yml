@@ -1,10 +1,11 @@
-dist: xenial
-language: java
+dist: bionic
+language: minimal
 
-jdk:
-  - openjdk8
+before_install:
+    - sudo apt -y remove openjdk-11-jre openjdk-11-jdk
+    - sudo apt -y install openjdk-8-jdk
 
 install: true
 
-script: mvn verify
+script: JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ mvn verify
 

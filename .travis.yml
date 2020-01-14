@@ -9,5 +9,5 @@ before_install:
 
 install: true
 
-script: JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ mvn verify
+script: JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ mvn verify -DconfigB=false -DconfigC=false
 

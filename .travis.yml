@@ -2,10 +2,10 @@ dist: bionic
 language: minimal
 
 before_install:
-    - sudo apt update
-    - sudo apt upgrade
-    - sudo apt remove openjdk-11-jre openjdk-11-jdk
-    - sudo apt install openjdk-8-jre openjdk-8-jdk maven
+    - sudo apt -qq update > /dev/null
+    - sudo apt -qq upgrade > /dev/null
+    - sudo apt -qq remove openjdk-11-jre openjdk-11-jdk > /dev/null
+    - sudo apt -qq install openjdk-8-jre openjdk-8-jdk maven > /dev/null
 
 install: true
 

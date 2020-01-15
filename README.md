@@ -1,6 +1,9 @@
 -------------------------------------------------------------------
                   Fedora Commons Repository
 -------------------------------------------------------------------
+
+[![Build Status](https://api.travis-ci.org/Brown-University-Library/fcrepo.svg?branch=master)](http://travis-ci.org/Brown-University-Library/fcrepo)
+
 This is a full source code release of Fedora.  Before using this
 software, you must read and agree to the license, found under
 resources/doc/license/license.html.  Documentation can be found for

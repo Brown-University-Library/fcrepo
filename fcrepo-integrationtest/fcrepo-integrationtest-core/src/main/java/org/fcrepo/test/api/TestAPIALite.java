@@ -27,6 +27,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.JUnitCore;
 import org.w3c.dom.Document;
 
@@ -133,6 +134,7 @@ public class TestAPIALite
     }
 */
 
+    @Ignore
     @Test
     public void testGetDisseminationUserInput() throws Exception {
         HttpInputStream his =
@@ -202,17 +204,17 @@ public class TestAPIALite
     @Test
     public void testConcurrentRequests() throws Exception {
         GetCallable[] callables = {
-                new GetCallable(s_client,"/get/demo:29/demo:27/convertImage?convertTo=gif"),
+                //new GetCallable(s_client,"/get/demo:29/demo:27/convertImage?convertTo=gif"),
                 new GetCallable(s_client,"/get/demo:SmileyBeerGlass/MEDIUM_SIZE"),
                 new GetCallable(s_client,"/get/demo:5?xml=true")
         };
         runConcurrent(callables);
-        assertEquals("image/gif",callables[0].lastType);
-        assertEquals(356909,callables[0].lastLength);
-        assertEquals(callables[1].lastType,"image/jpeg");
-        assertEquals(17109,callables[1].lastLength);
-        assertEquals(callables[2].lastType,"text/xml;charset=UTF-8");
-        assertEquals(callables[2].lastLength,924);
+        //assertEquals("image/gif",callables[0].lastType);
+        //assertEquals(356909,callables[0].lastLength);
+        assertEquals(callables[0].lastType,"image/jpeg");
+        assertEquals(17109,callables[0].lastLength);
+        assertEquals(callables[1].lastType,"text/xml;charset=UTF-8");
+        assertEquals(callables[1].lastLength,924);
     }
 
     public static junit.framework.Test suite() {

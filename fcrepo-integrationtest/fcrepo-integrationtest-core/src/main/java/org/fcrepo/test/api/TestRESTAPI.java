@@ -99,6 +99,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.JUnitCore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -660,6 +661,7 @@ public class TestRESTAPI
         assertEquals(SC_OK, status);
     }
 
+    @Ignore
     @Test
     public void testGETMethodCustomGoodUserArg() throws Exception {
         URI url = getURI("/objects/demo:29/methods/demo:27/resizeImage?width=50");
@@ -678,6 +680,7 @@ public class TestRESTAPI
                 .getValue());
     }
 
+    @Ignore
     @Test
     public void testGETMethodCustomGoodUserArgGoodDate() throws Exception {
         URI url = getURI(

@@ -24,6 +24,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.JUnitCore;
 
 /**
@@ -150,6 +151,7 @@ public class TestCommandLineUtilities
         System.out.println("Build/ingest test succeeded");
     }
 
+    @Ignore
     @Test
     public void testBatchModify() throws Exception {
         // Note: test will fail if default control group for DC datastreams (fedora.fcfg) is not X

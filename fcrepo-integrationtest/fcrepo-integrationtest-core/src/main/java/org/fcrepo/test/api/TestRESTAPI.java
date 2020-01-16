@@ -1469,6 +1469,24 @@ public class TestRESTAPI
     }
 
     @Test
+    public void testAddDatastreamBadChecksum() throws Exception {
+        String mimeType = "text/plain";
+        Datastream ds = apim.getDatastream(DEMO_REST_PID.toString(),"BAR",null);
+        assertNull(ds);
+        String dsPath = "/objects/" + DEMO_REST_PID + "/datastreams/BAR";
+        URI url = getURI(dsPath + "?controlGroup=M&dsLabel=bar&mimeType=" + mimeType + "&checksum=invalid&checksumType=MD5");
+        File temp = File.createTempFile("test", null);
+        DataOutputStream os = new DataOutputStream(new FileOutputStream(temp));
+        os.write(42);
+        os.close();
+        HttpResponse response = post(url, temp, true);
+        assertEquals(SC_INTERNAL_SERVER_ERROR, response.getStatusLine().getStatusCode());
+        String responseString = readString(response);
+        LOGGER.info("addDatastreamBadChecksum responseString: {}", responseString);
+        if (!responseString.contains("Checksum Mismatch")) throw new AssertionError("invalid error message: " + responseString);
+    }
+
+    @Test
     public void testModifyDatastreamByReference() throws Exception {
         // Create BAR datastream
         URI url = getURI(

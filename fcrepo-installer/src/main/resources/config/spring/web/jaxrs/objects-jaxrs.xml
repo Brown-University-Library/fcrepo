@@ -38,6 +38,9 @@
     </jaxrs:serviceBeans>
     <jaxrs:providers>
       <bean class="org.fcrepo.server.rest.cxf.WadlGenerator" />
+      <bean class="org.apache.cxf.jaxrs.impl.WebApplicationExceptionMapper">
+        <property name="addMessageToResponse" value="true" />
+      </bean>
     </jaxrs:providers>
   </jaxrs:server>
  
